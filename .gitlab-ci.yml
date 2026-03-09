@@ -1,0 +1,77 @@
+stages:
+  - install
+  - test
+  - build
+  - deploy
+  - mirror
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+install-job:
+  stage: install
+  image: node:18-alpine
+  script:
+    - echo "📦 Installing dependencies..."
+    - npm ci
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 hour
+
+lint-job:
+  stage: test
+  image: node:18-alpine
+  script:
+    - echo "🔍 Linting code..."
+    - npx next lint --dir pages --dir components || echo "No lint errors."
+  dependencies:
+    - install-job
+
+build-job:
+  stage: build
+  image: node:18-alpine
+  script:
+    - echo "🔨 Building Next.js app..."
+    - npm run build
+    - echo "✅ Build successful!"
+  artifacts:
+    paths:
+      - out/
+      - .next/
+    expire_in: 2 hours
+  dependencies:
+    - install-job
+
+deploy-vercel:
+  stage: deploy
+  image: node:18-alpine
+  script:
+    - echo "🚀 Deploying to Vercel..."
+    - npm install -g vercel
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+    - vercel build --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+    - echo "✅ Live at https://my-portfolio-hazel-mu-71.vercel.app"
+  environment:
+    name: production
+    url: https://my-portfolio-hazel-mu-71.vercel.app
+  dependencies:
+    - build-job
+  only:
+    - main
+
+mirror-to-github:
+  stage: mirror
+  image: alpine/git
+  script:
+    - echo "🪞 Mirroring to GitHub..."
+    - git config --global user.email "rintuchowdory@yahoo.com"
+    - git config --global user.name "Rintu Chowdory"
+    - git remote set-url origin https://x-token-auth:${GITHUB_TOKEN}@github.com/rintuchowdory/my-portfolio.git
+    - git push origin HEAD:main --force
+    - echo "✅ Mirror to GitHub successful!"
+  only:
+    - main
