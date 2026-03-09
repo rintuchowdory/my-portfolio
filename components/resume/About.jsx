@@ -31,7 +31,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" ref__={ref} className="py-32 px-6 max-w-6xl mx-auto">
+    <section id="about" ref={ref} className="py-32 px-6 max-w-6xl mx-auto">
       <div className="grid lg:grid-cols-2 gap-20 items-center">
         <div className="section-reveal relative">
           <div className="relative rounded-3xl overflow-hidden">

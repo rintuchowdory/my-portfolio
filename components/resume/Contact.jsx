@@ -38,7 +38,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" ref__={ref} className="py-32 px-6 relative">
+    <section id="contact" ref={ref} className="py-32 px-6 relative">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <div className="section-reveal mb-3"><span className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest">Get In Touch</span></div>
@@ -48,7 +48,7 @@ export default function Contact() {
           <div>
             <div className="section-reveal space-y-6 mb-10">
               {contactItems.map(({ icon: Icon, label, value, href }) => (
-                <a key={label} href__={href} className="flex items-center gap-4 glass rounded-2xl p-5 hover:border-[#c9a84c]/20 border border-white/0 transition-all duration-300 group">
+                <a key={label} href={href} className="flex items-center gap-4 glass rounded-2xl p-5 hover:border-[#c9a84c]/20 border border-white/0 transition-all duration-300 group">
                   <div className="w-11 h-11 rounded-xl glass-gold flex items-center justify-center shrink-0"><Icon size={18} className="text-[#c9a84c]" /></div>
                   <div>
                     <div className="text-xs text-gray-600 uppercase tracking-wide">{label}</div>
@@ -61,7 +61,7 @@ export default function Contact() {
               <p className="text-gray-600 text-xs uppercase tracking-widest mb-4">Socials</p>
               <div className="flex gap-3">
                 {socials.map(({ icon: Icon, label, href }) => (
-                  <a key={label} href__={href} className="flex-1 flex flex-col items-center gap-2 glass rounded-2xl p-4 border border-white/0 hover:border-[#c9a84c]/20 transition-all duration-300 group">
+                  <a key={label} href={href} className="flex-1 flex flex-col items-center gap-2 glass rounded-2xl p-4 border border-white/0 hover:border-[#c9a84c]/20 transition-all duration-300 group">
                     <Icon size={18} className="text-gray-500 group-hover:text-[#c9a84c] transition-colors" />
                     <span className="text-xs text-gray-500">{label}</span>
                   </a>

@@ -59,8 +59,8 @@ export default function Hero() {
               Linux Administrator & Cloud DevOps Engineer based in Baesweiler, Germany. Passionate about AWS, Docker, Kubernetes, and building reliable cloud infrastructure.
             </p>
             <div className="flex flex-wrap gap-4 mb-12">
-              <a href__="#contact" className="px-8 py-4 rounded-full gold-bg text-black font-bold text-sm tracking-wide hover:shadow-lg hover:shadow-[#c9a84c]/30 transition-all duration-300 hover:scale-105">Let's Talk</a>
-              <a href__="/ResumePDF" className="px-8 py-4 rounded-full glass border border-white/10 text-white font-semibold text-sm tracking-wide hover:border-[#c9a84c]/40 transition-all duration-300 flex items-center gap-2">
+              <a href="#contact" className="px-8 py-4 rounded-full gold-bg text-black font-bold text-sm tracking-wide hover:shadow-lg hover:shadow-[#c9a84c]/30 transition-all duration-300 hover:scale-105">Let's Talk</a>
+              <a href="#" className="px-8 py-4 rounded-full glass border border-white/10 text-white font-semibold text-sm tracking-wide hover:border-[#c9a84c]/40 transition-all duration-300 flex items-center gap-2">
                 <Download size={16} /> Download CV
               </a>
             </div>
@@ -72,7 +72,7 @@ export default function Hero() {
                 { icon: Linkedin, href: "https://www.linkedin.com/in/rintu-chowdory-67977b2a7", label: "LinkedIn" },
                 { icon: Mail, href: "mailto:rintuchowdory@yahoo.com", label: "Email" },
               ].map(({ icon: Icon, href, label }) => (
-                <a key={label} href__={href} className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-[#c9a84c] border border-white/5 transition-all duration-300" aria-label={label}>
+                <a key={label} href={href} className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-[#c9a84c] border border-white/5 transition-all duration-300" aria-label={label}>
                   <Icon size={16} />
                 </a>
               ))}

@@ -24,7 +24,7 @@ export default function Experience() {
   }, []);
 
   return (
-    <section id="experience" ref__={ref} className="py-32 px-6">
+    <section id="experience" ref={ref} className="py-32 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <div className="section-reveal mb-3">

@@ -64,7 +64,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" ref__={ref} className="py-32 px-6 relative">
+    <section id="skills" ref={ref} className="py-32 px-6 relative">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <div className="section-reveal mb-3">

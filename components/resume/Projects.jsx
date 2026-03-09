@@ -29,8 +29,8 @@ function ProjectCard({ project, idx }) {
           ))}
         </div>
         <div className="flex items-center gap-3">
-          <a href__={project.github} className="flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-full gold-bg text-black"><ExternalLink size={13} /> Live Demo</a>
-          <a href__={project.github} className="flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-full glass border border-white/10 text-gray-300"><Github size={13} /> Source</a>
+          <a href={project.live} className="flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-full gold-bg text-black"><ExternalLink size={13} /> Live Demo</a>
+          <a href={project.github} className="flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-full glass border border-white/10 text-gray-300"><Github size={13} /> Source</a>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" ref__={ref} className="py-32 px-6 relative">
+    <section id="projects" ref={ref} className="py-32 px-6 relative">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <div className="section-reveal mb-3"><span className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest">Portfolio</span></div>
@@ -63,7 +63,7 @@ export default function Projects() {
           {projects.map((project, i) => <ProjectCard key={project.title} project={project} idx={i} />)}
         </div>
         <div className="section-reveal text-center mt-12">
-          <a href__="https://github.com/rintuchowdory" className="inline-flex items-center gap-2 px-8 py-4 rounded-full glass border border-white/10 text-gray-300 hover:text-white font-semibold text-sm">
+          <a href="https://github.com/rintuchowdory" className="inline-flex items-center gap-2 px-8 py-4 rounded-full glass border border-white/10 text-gray-300 hover:text-white font-semibold text-sm">
             <Github size={16} /> View All on GitHub
           </a>
         </div>
