@@ -1,18 +1,18 @@
 import React, { useEffect, useRef } from "react";
-import { MapPin, Coffee, Code2, Heart } from "lucide-react";
+import { Terminal, Cloud, Code2, Brain } from "lucide-react";
 
-const stats = [
-  { value: "5+", label: "Years Experience" },
-  { value: "50+", label: "Projects Done" },
-  { value: "20+", label: "Happy Clients" },
-  { value: "3", label: "Awards Won" },
+const highlights = [
+  { icon: Terminal, label: "Linux / WSL2", detail: "Daily driver — k3s, Kubernetes Dashboard, systemd services" },
+  { icon: Cloud, label: "Cloud & DevOps", detail: "AWS, Docker, Kubernetes, GitHub Actions, Cloudflare Workers" },
+  { icon: Code2, label: "Full-Stack Dev", detail: "React + Vite, Next.js, FastAPI, n8n AI workflows" },
+  { icon: Brain, label: "AI Engineering", detail: "Groq Llama3, Gemini, Anthropic — integrated into 30+ apps" },
 ];
 
-const facts = [
-  { icon: MapPin, text: "Based in Baesweiler, Germany" },
-  { icon: Coffee, text: "Fueled by coffee & Linux terminals" },
-  { icon: Code2, text: "Open source contributor on GitHub" },
-  { icon: Heart, text: "Loves cloud computing & cricket" },
+const stats = [
+  { value: "85+", label: "GitHub Repos" },
+  { value: "30+", label: "Deployed Apps" },
+  { value: "5+", label: "Yrs Production Exp." },
+  { value: "4", label: "Languages" },
 ];
 
 export default function About() {
@@ -22,52 +22,61 @@ export default function About() {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         ref.current?.querySelectorAll(".section-reveal").forEach((el, i) => {
-          setTimeout(() => el.classList.add("visible"), i * 150);
+          setTimeout(() => el.classList.add("visible"), i * 120);
         });
       }
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1 });
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="about" ref={ref} className="py-32 px-6 max-w-6xl mx-auto">
-      <div className="grid lg:grid-cols-2 gap-20 items-center">
-        <div className="section-reveal relative">
-          <div className="relative rounded-3xl overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80&fit=crop" alt="Working" className="w-full h-80 object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#c9a84c]/20 via-transparent to-[#0a0a0f]/80" />
+    <section id="about" ref={ref} className="py-32 px-6 relative">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <div className="section-reveal mb-3"><span className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest">About Me</span></div>
+          <h2 className="section-reveal text-4xl md:text-5xl font-black">
+            Turning <span className="gradient-text">Infrastructure</span> into Reality
+          </h2>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+          <div className="section-reveal space-y-5 text-gray-400 text-lg leading-relaxed">
+            <p>
+              I'm a <strong className="text-white">self-taught DevOps practitioner & full-stack developer</strong> based in Baesweiler, NRW — currently working at INGENERIC GmbH in precision optical manufacturing while actively expanding a portfolio of <strong className="text-white">85+ GitHub projects</strong>.
+            </p>
+            <p>
+              My stack revolves around <strong className="text-white">React + Vite frontends</strong> deployed to GitHub Pages or Vercel, <strong className="text-white">Cloudflare Workers</strong> as secure API proxies, <strong className="text-white">Groq/Gemini/Anthropic</strong> as AI backends, and a <strong className="text-white">WSL2 home lab</strong> running k3s and the full Kubernetes Dashboard.
+            </p>
+            <p>
+              I speak Bengali (native), German (B2), English (B2), and Russian (B1) — and bring the same structured, detail-oriented mindset from cleanroom production work into every line of code I write.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              {["📍 Baesweiler, NRW", "🌐 linkedin.com/in/rintu-chowdory", "📧 rintuchowdory@yahoo.com"].map(t => (
+                <span key={t} className="glass px-3 py-1.5 rounded-full text-sm border border-white/5 text-gray-300">{t}</span>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-2 gap-3 mt-3">
-            {stats.map((s, i) => (
-              <div key={i} className="glass-gold rounded-2xl p-5 text-center hover-lift">
-                <div className="text-3xl font-black gradient-text">{s.value}</div>
-                <div className="text-xs text-gray-500 mt-1 tracking-wide">{s.label}</div>
+
+          <div className="grid grid-cols-2 gap-4">
+            {highlights.map(({ icon: Icon, label, detail }) => (
+              <div key={label} className="section-reveal glass-gold rounded-2xl p-5 hover-lift">
+                <Icon className="text-[#c9a84c] mb-3" size={24} />
+                <h3 className="text-white font-bold mb-1 text-sm">{label}</h3>
+                <p className="text-gray-400 text-xs leading-relaxed">{detail}</p>
               </div>
             ))}
           </div>
         </div>
-        <div>
-          <div className="section-reveal mb-3">
-            <span className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest">About Me</span>
-          </div>
-          <h2 className="section-reveal text-4xl md:text-5xl font-black mb-6 leading-tight">
-            Turning infrastructure into<br /><span className="gradient-text">cloud reality</span>
-          </h2>
-          <p className="section-reveal text-gray-400 text-lg leading-relaxed mb-6">
-            I'm a Linux Administrator & Cloud/DevOps Engineer with hands-on expertise in AWS, Docker, Kubernetes, and CI/CD pipelines. I build reliable, scalable infrastructure and automate workflows using GitHub Actions and shell scripting.
-          </p>
-          <p className="section-reveal text-gray-500 leading-relaxed mb-10">
-            Multilingual professional (Bengali, German B2, English B2, Russian B1) with a diverse background across production, logistics, and IT. When I'm not in the terminal, I enjoy football, cricket, and swimming.
-          </p>
-          <div className="section-reveal grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {facts.map(({ icon: Icon, text }, i) => (
-              <div key={i} className="flex items-center gap-3 glass rounded-xl px-4 py-3">
-                <Icon size={16} className="text-[#c9a84c] shrink-0" />
-                <span className="text-sm text-gray-400">{text}</span>
-              </div>
-            ))}
-          </div>
+
+        {/* Stats row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {stats.map(({ value, label }) => (
+            <div key={label} className="section-reveal glass rounded-2xl p-6 text-center hover-lift">
+              <div className="text-4xl font-black gradient-text mb-1">{value}</div>
+              <div className="text-gray-400 text-sm">{label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
